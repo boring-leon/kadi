@@ -1,0 +1,53 @@
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import 'fb.scss';
+
+@media (max-width: 767.98px) {
+  .display-4 {
+    font-size: 2rem;
+    padding: 0;
+    margin: 20px;
+  }
+  .btn-block, .btn-lg{
+    font-size: 1.1rem;
+  }
+
+  .total-units h4{
+    font-size:1.3rem;
+  }
+
+  .lead-info{
+    font-size: 1.2rem;
+  }  
+  .why-register-btn{
+    font-size: 0.95rem;
+  }
+}
+
+html, body{
+  min-height: 550px;
+  height: 100%;
+}
+
+body{
+  position: relative;
+}
+
+.btn-block-container{
+  left: 14%;
+  right: 14%;
+}
+
+.absolute-bottom{
+  position: absolute;
+  bottom: 10px;
+  margin-bottom:10px;
+}
+
+.vue-alert{
+  text-align: center;
+  cursor: pointer;
+  .vue-alert-msg{
+    font-size: 1.2rem;
+  }
+}
