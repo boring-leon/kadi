@@ -20,16 +20,16 @@ class CustomIngredientsController extends Controller
 
     public function store(StoreOrUpdateIngredient $request, User $user){
         $ingredient = $user->ingredients()->create($this->ingredientBuilder->getModelData());
-        return $ingredient;
+        return response()->json($ingredient);
     }
 
     public function update(StoreOrUpdateIngredient $request, CustomIngredient $ingredient){
         $ingredient->update($this->ingredientBuilder->getModelData());
-        return $ingredient;
+        return response()->json($ingredient);
     }
 
     public function delete(CustomIngredient $ingredient){
         $ingredient->delete();
-        return $ingredient;
+        return response()->json($ingredient);
     }
 }

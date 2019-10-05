@@ -22,12 +22,12 @@ class AccountController extends Controller
         $user->exchanger = $request->exchanger;
         $user->save();
         
-        return $user;
+        return response()->json($user);
     }
 
     public function deleteAccount(Request $request){
         $user = User::find($request->user_id)->delete();
-        return $user;
+        return response()->json($user);
     }
 
 }

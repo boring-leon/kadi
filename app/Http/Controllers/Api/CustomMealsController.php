@@ -20,12 +20,12 @@ class CustomMealsController extends Controller
 
     public function store(StoreOrUpdateCustomMeal $request, User $user){
         $meal = $user->meals()->create($this->mealBuilder->getModelData());
-        return $meal;
+        return response()->json($meal);
     }
 
     public function update(StoreOrUpdateCustomMeal $request, CustomMeal $meal){
         $meal->update($this->mealBuilder->getModelData());
-        return $meal;
+        return response()->json($meal);
     }
 
     public function delete(CustomMeal $meal){
