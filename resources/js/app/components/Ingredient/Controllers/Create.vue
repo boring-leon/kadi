@@ -156,7 +156,7 @@ export default {
 
   computed: {
     types() {
-      return baseState.meal_types;
+      return baseState.ingredient_types;
     },
     defaultIngredientType() {
       return this.types.find(t => t.name.includes("moje")).name;

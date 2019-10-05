@@ -120,7 +120,7 @@ export default {
   },
   computed: {
     types() {
-      return baseState.meal_types;
+      return baseState.ingredient_types;
     },
     canSubmit() {
       return (

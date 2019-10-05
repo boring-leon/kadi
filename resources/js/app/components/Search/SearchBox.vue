@@ -46,7 +46,7 @@ export default {
       required: true
     },
     options: {
-      default: () => baseState.meal_types
+      default: () => baseState.ingredient_types
     }
   },
   methods: {

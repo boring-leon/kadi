@@ -13,8 +13,8 @@ import { prepareIngredients } from './helpers/ingredientHelpers';
 export default new Vuex.Store({
     modules: { Plate, User, CustomIngredient, Messages, CustomPlate },
     state: {
-        ingredients: prepareIngredients(baseState.meals).concat(
-            prepareIngredients(baseState.custom_meals).map(m => { m.isCustom = true; return m; })
+        ingredients: prepareIngredients(baseState.ingredients).concat(
+            prepareIngredients(baseState.custom_ingredients).map(m => { m.isCustom = true; return m; })
         )
     },
     mutations: {

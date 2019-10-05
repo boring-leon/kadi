@@ -27,10 +27,10 @@ class HomeController extends Controller
     public function serveFrontend(){
         $data = [
             'user' => auth()->user(),
-            'meals' => $this->ingredientRepo->all(),
-            'custom_meals' => auth()->user()->ingredients,
+            'ingredients' => $this->ingredientRepo->all(),
+            'custom_ingredients' => auth()->user()->ingredients,
             'custom_plates' => auth()->user()->meals,
-            'meal_types' =>  $this->typesMapper->getMappedItems(),
+            'ingredient_types' =>  $this->typesMapper->getMappedItems(),
             'activities' => config('static.activities'),
             'admin_route' => route('admin.index'),
             'home_route' => url('/')

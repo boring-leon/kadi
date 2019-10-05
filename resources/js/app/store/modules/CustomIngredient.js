@@ -8,7 +8,7 @@ export default {
         createIngredient({commit}, {ingredient}){
             CustomIngredientModel.create(ingredient).then(i => {
                 i.isCustom = true;
-                baseState.custom_meals.push(i);
+                baseState.custom_ingredients.push(i);
                 commit('addIngredient', i, {root:true});
             });
         },

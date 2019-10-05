@@ -27,7 +27,7 @@ const preparePlate = (plate) => {
 }
 
 const getBaseStateIngredient = (plateIngredient) => {
-    const ingredientStateIndex = plateIngredient.is_custom ? "custom_meals" : "meals";
+    const ingredientStateIndex = plateIngredient.is_custom ? "custom_ingredients" : "ingredients";
     const storeIngredient = baseState[ingredientStateIndex].find(m => m.id == plateIngredient.id);
     return cloneDeep(storeIngredient);
 }
