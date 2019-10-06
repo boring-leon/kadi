@@ -9,7 +9,7 @@
     <section>
       <ExchangerModal id="exchanger_modal" />
       <ActivitiesModal id="activities_modal" :kcal ='totalKcal' />
-      <CreatePlate id="plate_modal" />
+      <CreateMeal id="meal_modal" />
 
       <div class="alert alert-info total-units" style='margin-bottom:35px;'>
         <h4 style="margin:0; padding:0;">Sugerowana ilość jednostek {{ totalUnits | round(2) }}</h4>
@@ -28,7 +28,7 @@
         <button class='btn btn-info btn-lg btn-block' @click="displayModal('activities_modal')">
           Jak to spalić?
         </button>
-        <button class='btn btn-success btn-lg btn-block' @click="displayModal('plate_modal')">
+        <button class='btn btn-success btn-lg btn-block' @click="displayModal('meal_modal')">
           Zapisz danie
         </button>
       </div>
