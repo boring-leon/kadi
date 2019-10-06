@@ -64,10 +64,6 @@ export default {
   },
   
   methods: {
-    setOnIngredient(ingredient, data) {
-      this.$store.commit("Plate/setProps", { ingredient: ingredient, data: data });
-    },
-
     getExchanger(plateIngredient) {
       return this.getStoreIngredient(plateIngredient).exchanger * this.getPortions(plateIngredient);
     },
