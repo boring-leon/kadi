@@ -16,9 +16,6 @@
                 <a class="list-group-item list-group-action" href="{{ route('ingredient.list') }}" role="button">
                     Lista składników
                 </a>
-                <a class="list-group-item list-group-action" href="{{ route('ingredient.list') }}" role="button">
-                    Lista składników
-                </a>
                 <a class="list-group-item list-group-action" href="{{ route('ingredient.create') }}" role="button">
                     Dodaj składnik
                 </a>
