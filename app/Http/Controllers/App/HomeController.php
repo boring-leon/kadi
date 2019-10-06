@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function serveFrontend(){
         $data = [
             'user' => auth()->user(),
-            'ingredients' => $this->ingredientRepo->all(),
+            'ingredients' => $this->ingredientRepo->all()->values(),
             'custom_ingredients' => auth()->user()->ingredients,
             'custom_meals' => auth()->user()->meals,
             'ingredient_types' =>  $this->typesMapper->getMappedItems(),
