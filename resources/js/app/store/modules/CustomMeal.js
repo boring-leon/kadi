@@ -24,15 +24,19 @@ export default {
     },
 
     actions: {
-        createMeal({ commit }, { meal, name }) {
-            CustomMeal.create(getMealForRequest(meal, name)).then(meal =>
-                commit('addMeal', prepareMeal(meal))
+        createMeal({ commit, rootState }, {name}) {
+            const mealFromPlate = getMealForRequest(rootState.Plate, name);
+                   
+            CustomMeal.create(mealFromPlate, name).then(meal => 
+                commit('addMeal', prepareMeal(meal)) 
             );
         },
-        updateMeal({ commit, getters }, { meal, name, id }) {
-            CustomMeal.update(getMealForRequest(meal, name), id).then(newMeal => {
-                commit('setProps', { data: prepareMeal(newMeal), meal: getters['find'](id) });
-            });
+        updateMeal({ commit, rootState, getters }, {name, id}) {
+            const mealFromPlate = getMealForRequest(rootState.Plate, name);
+            
+            CustomMeal.update(mealFromPlate, id).then(meal =>
+                commit('setProps', { data: prepareMeal(meal), meal: getters['find'](id) })
+            );
         },
         removeMeal({commit}, {meal}){
             CustomMeal.delete(meal);

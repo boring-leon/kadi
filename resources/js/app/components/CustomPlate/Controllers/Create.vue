@@ -42,10 +42,10 @@ export default {
   methods: {
     saveMeal() {
       if(this.override){
-        this.$store.dispatch("CustomMeal/updateMeal", {meal: this.plate, id: this.override, name:this.name });
+        this.$store.dispatch("CustomMeal/updateMeal", {id: this.override, name:this.name });
       }
       else{
-        this.$store.dispatch("CustomMeal/createMeal", {meal: this.plate, name: this.name });
+        this.$store.dispatch("CustomMeal/createMeal", {name: this.name});
       }
       this.closeModal();
     },
@@ -67,9 +67,6 @@ export default {
   },
 
   computed: {
-    plate() {
-      return this.$store.state.Plate;
-    },
     customMeals(){
       return this.$store.state.CustomMeal.meals;
     },
