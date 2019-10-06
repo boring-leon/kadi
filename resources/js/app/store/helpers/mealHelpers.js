@@ -20,7 +20,6 @@ const prepareMeal = (meal) => {
         return {
             ...getBaseStateIngredient(i),
             weight: i.weight,
-            templateKey: uuid.v4()
         };
     });
     return meal;
