@@ -21,6 +21,9 @@ Route::middleware(["verified"])->group(function(){
         Route::get('mailing', 'MailsController@index')->name('mails.index');
         Route::get('mailing/preview', 'MailsController@show')->name('mails.preview');
         Route::post('mailing/send', 'MailsController@send')->name('mails.send');
+
+        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')
+        ->name('logs')->middleware('admin');
     });
 });
 
