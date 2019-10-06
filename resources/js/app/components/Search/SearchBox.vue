@@ -52,6 +52,9 @@ export default {
         const plate = this.$store.getters["CustomMeal/find"](plateId);
         plate.ingredients.forEach(i => this.pushOnGeneralPlate(i));
       }
+      else {
+        this.$store.commit("Plate/removeAll");
+      }
     },
 
     pushOnGeneralPlate(ingredient){
