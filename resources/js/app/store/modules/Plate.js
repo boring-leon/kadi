@@ -7,7 +7,7 @@ export default {
         ingredients: []
     },
     mutations: {
-        addIngredient: (state, ingredient) => state.ingredients.push( _.cloneDeep(ingredient) ),
+        addIngredient: (state, ingredient) => state.ingredients.push(ingredient),
         removeIngredient: (state, ingredient) => state.ingredients.splice(state.ingredients.indexOf(ingredient), 1),
         removeAll: (state) => Vue.set(state, 'ingredients', []),
         setProps(state, {ingredient, data }) {

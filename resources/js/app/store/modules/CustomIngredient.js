@@ -12,12 +12,9 @@ export default {
                 commit('addIngredient', i, {root:true});
             });
         },
-        updateIngredient({commit, rootGetters}, {ingredient, newIngredient}){
+        updateIngredient({commit}, {ingredient, newIngredient}){
             const commitIngredient = getIngredientForCommit(newIngredient);
             commit('setProps', { ingredient: ingredient, data: commitIngredient}, {root:true}); 
-            if(rootGetters['Plate/find'](ingredient.templateKey)){
-                commit('Plate/setProps', {ingredient:ingredient, data: commitIngredient}, {root:true});
-            }
             CustomIngredientModel.update(newIngredient);
         },
         deleteIngredient({commit}, {ingredient}){
