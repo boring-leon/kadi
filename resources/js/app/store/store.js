@@ -7,11 +7,11 @@ import Plate from './modules/Plate';
 import User from './modules/User';
 import CustomIngredient from './modules/CustomIngredient';
 import Messages from './modules/Messages';
-import CustomPlate from './modules/CustomPlate';
+import CustomMeal from './modules/CustomMeal';
 import { prepareIngredients } from './helpers/ingredientHelpers';
 
 export default new Vuex.Store({
-    modules: { Plate, User, CustomIngredient, Messages, CustomPlate },
+    modules: { Plate, User, CustomIngredient, Messages, CustomMeal },
     state: {
         ingredients: prepareIngredients(baseState.ingredients).concat(
             prepareIngredients(baseState.custom_ingredients).map(m => { m.isCustom = true; return m; })

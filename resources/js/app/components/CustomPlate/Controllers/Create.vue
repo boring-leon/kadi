@@ -7,11 +7,11 @@
             <div class="form-group">
               <input class="form-control" type="text" v-model="name" />
             </div>
-            <div class="form-group" v-if="customPlates.length > 0">
+            <div class="form-group" v-if="customMeals.length > 0">
               <select class="form-control" v-model="override">
                 <option selected value>edytuj posiłek</option>
-                <option v-for='plate in customPlates' :key='plate.id' :value='plate.id'>
-                  {{ plate.name }}
+                <option v-for='meal in customMeals' :key='meal.id' :value='meal.id'>
+                  {{ meal.name }}
                 </option>
               </select>
             </div>
@@ -42,10 +42,10 @@ export default {
   methods: {
     saveMeal() {
       if(this.override){
-        this.$store.dispatch("CustomPlate/updatePlate", {plate: this.plate, id: this.override, name:this.name });
+        this.$store.dispatch("CustomMeal/updateMeal", {meal: this.plate, id: this.override, name:this.name });
       }
       else{
-        this.$store.dispatch("CustomPlate/createPlate", {plate: this.plate, name: this.name });
+        this.$store.dispatch("CustomMeal/createMeal", {meal: this.plate, name: this.name });
       }
       this.closeModal();
     },
@@ -61,7 +61,7 @@ export default {
   watch:{
     override(v){
       if(v){
-        this.name = this.customPlates.find(p => p.id == this.override).name
+        this.name = this.customMeals.find(p => p.id == this.override).name
       }
     }
   },
@@ -70,8 +70,8 @@ export default {
     plate() {
       return this.$store.state.Plate;
     },
-    customPlates(){
-      return this.$store.state.CustomPlate.plates;
+    customMeals(){
+      return this.$store.state.CustomMeal.meals;
     },
     btnMessage(){
       return this.override ? `Zapisz zmiany do ${this.name}` : `Zapisz ${this.name}`;

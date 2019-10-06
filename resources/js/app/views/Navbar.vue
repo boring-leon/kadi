@@ -28,7 +28,7 @@
               <router-link class="dropdown-item" :to="{name: 'UserIngredients'}">
                 moje składniki
               </router-link>
-              <router-link class="dropdown-item" :to="{name: 'UserPlates'}">
+              <router-link class="dropdown-item" :to="{name: 'UserMeals'}">
                 moje posiłki
               </router-link>
               <router-link class="dropdown-item" :to="{name: 'UserAccount'}">

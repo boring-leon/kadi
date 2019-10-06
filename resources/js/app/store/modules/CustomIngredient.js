@@ -22,7 +22,7 @@ export default {
         },
         deleteIngredient({commit}, {ingredient}){
             commit('Plate/removeIngredient', ingredient, {root:true});
-            commit('CustomPlate/removeIngredientFromAll', ingredient, {root:true});
+            commit('CustomMeal/removeIngredientFromAll', ingredient, {root:true});
             commit('removeIngredient', ingredient, {root:true});
             CustomIngredientModel.delete(ingredient);
         }

@@ -1,7 +1,7 @@
 <template>
   <form @submit="$event.preventDefault()">
     <div class="row">
-      <div class="col s6">
+      <div class="col s4">
         <input
           type="text"
           class="form-control"
@@ -11,20 +11,17 @@
           @keyup="$emit('update:ingredientName', $event.target.value.trim())"
         />
       </div>
-      <div class="col s3">
+      <div class="col s4">
         <select class="form-control" @change="$emit('update:ingredientType', $event.target.value)">
-          <option selected value="*">wszystkie rodzaje</option>
+          <option selected value="*">rodzaj składnika</option>
           <option v-for="option in options" :key="option.id">{{ option.name }}</option>
         </select>
       </div>
-      <div class="col s3" v-if="customPlates.length > 0">
+      <div class="col s4" v-if="customMeals.length > 0">
         <select class="form-control" @change="loadPlate($event.target.value)">
-          <option selected value>wybierz posiłek</option>
-          <option
-            v-for="plate in customPlates"
-            :key="plate.templateKey"
-            :value="plate.id"
-          >{{ plate.name }}</option>
+          <option selected value>posiłek</option>
+          <option v-for="meal in customMeals" :key="meal.templateKey" :value="meal.id"
+          >{{ meal.name }}</option>
         </select>
       </div>
     </div>
@@ -52,7 +49,7 @@ export default {
   methods: {
     loadPlate(plateId) {
       if(Number(plateId) > 0){
-        const plate = this.$store.getters["CustomPlate/find"](plateId);
+        const plate = this.$store.getters["CustomMeal/find"](plateId);
         plate.ingredients.forEach(i => this.pushOnGeneralPlate(i));
       }
     },
@@ -75,8 +72,8 @@ export default {
     }
   },
   computed: {
-    customPlates() {
-      return this.$store.state.CustomPlate.plates;
+    customMeals() {
+      return this.$store.state.CustomMeal.meals;
     }
   }
 };

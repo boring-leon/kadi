@@ -29,7 +29,7 @@ class HomeController extends Controller
             'user' => auth()->user(),
             'ingredients' => $this->ingredientRepo->all(),
             'custom_ingredients' => auth()->user()->ingredients,
-            'custom_plates' => auth()->user()->meals,
+            'custom_meals' => auth()->user()->meals,
             'ingredient_types' =>  $this->typesMapper->getMappedItems(),
             'activities' => config('static.activities'),
             'admin_route' => route('admin.index'),

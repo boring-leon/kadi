@@ -1,6 +1,6 @@
 import DynamicStepView from '../views/DynamicStepView.vue';
 import IngredientView from '../views/UserIngredients.vue';
-import PlatesView from '../views/UserPlates.vue';
+import UserMealsView from '../views/UserMeals.vue';
 import SupportView from '../views/Support.vue';
 import TutorialView from '../views/Tutorial.vue';
 import AccountView from '../views/Account.vue';
@@ -30,7 +30,7 @@ export default [
         }
     },
     {
-        path: '/moje-posilki', component: PlatesView, name: "UserPlates", meta:{
+        path: '/moje-posilki', component: UserMealsView, name: "UserMeals", meta:{
             title: 'Moje posiłki'
         }
     },

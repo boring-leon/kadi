@@ -1,11 +1,11 @@
 import Model from '../lib/Model';
 
 export default{
-    create(plate){
+    create(meal){
         return Model.post({
             path: `meals/${baseState.user.id}`,
             clone:{
-                data: plate,
+                data: meal,
             },
             transform: {
                 rename: { meals: 'ingredients' },
@@ -14,11 +14,11 @@ export default{
         });
     },
 
-    update(plate, id){
+    update(meal, id){
         return Model.patch({
             path: `meals/${id}`,
             clone:{
-                data: plate
+                data: meal
             },
             transform: {
                 rename: { meals: 'ingredients' },
@@ -27,9 +27,9 @@ export default{
         });
     },
 
-    delete(plate){
+    delete(meal){
         return Model.delete({
-            path: `meals/${plate.id}/${baseState.user.id}/${baseState.user.api_token}`
+            path: `meals/${meal.id}/${baseState.user.id}/${baseState.user.api_token}`
         });
     }
 }
