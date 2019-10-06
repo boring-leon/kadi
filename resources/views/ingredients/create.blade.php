@@ -42,6 +42,15 @@
                     @enderror
             </div>
             <div class="form-group">
+                <input type='number' class='form-control  @error("glycemic_index") is-invalid @enderror' 
+                name='glycemic_index' placeholder="IG" value="{{ old('kcal') }}">
+                @error('glycemic_index')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="form-group">
                 <input type='number' id="ww" class='form-control  @error("exchanger") is-invalid @enderror' 
                 required name='exchanger' placeholder="WW/porcja" value="{{ old('exchanger') }}" step="0.01">
                 @error('exchanger')
