@@ -41,11 +41,11 @@ import { mapState } from "vuex";
 import SummaryTable from "../components/Summary/SummaryTable.vue";
 import ExchangerModal from "../components/Summary/ExchangerModal.vue";
 import ActivitiesModal from "../components/Summary/ActivitiesModal.vue";
-import CreatePlate from "../components/CustomPlate/Controllers/Create.vue";
+import CreateMeal from "../components/CustomMeal/Controllers/Create.vue";
 
 export default {
   name: "StepThreeFragment",
-  components: { SummaryTable, ExchangerModal, ActivitiesModal, CreatePlate },
+  components: { SummaryTable, ExchangerModal, ActivitiesModal, CreateMeal },
   
   created() {
     this.ingredients.forEach(m => {
