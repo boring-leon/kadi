@@ -10,24 +10,32 @@
             <p class="lead">
                 Wiem, że nie wygląda to najlepiej, ale działa
             </p>
-            <hr class="my-4">    
-            <div class='row'>
-                <a class="btn btn-primary btn-lg mr-2" href="{{ route('ingredient.list') }}" role="button">
+            <hr class="my-4">  
+            
+            <div class="list-group">
+                <a class="list-group-item list-group-action" href="{{ route('ingredient.list') }}" role="button">
                     Lista składników
                 </a>
-                <a class="btn btn-success btn-lg mr-2" href="{{ route('ingredient.create') }}" role="button">
+                <a class="list-group-item list-group-action" href="{{ route('ingredient.list') }}" role="button">
+                    Lista składników
+                </a>
+                <a class="list-group-item list-group-action" href="{{ route('ingredient.create') }}" role="button">
                     Dodaj składnik
                 </a>
-                <a class="btn btn-secondary btn-lg mr-2" href="{{ route('user.list') }}" role="button">
+                <a class="list-group-item list-group-action" href="{{ route('user.list') }}" role="button">
                     Lista użytkowników
                 </a>
-                <a class="btn btn-info btn-lg mr-2" href="{{ route('production.cache') }}" role="button">
+                <a class="list-group-item list-group-action" href="{{ route('production.cache') }}" role="button">
                     Cache 
                 </a>
-                <a class="btn btn-primary btn-lg mr-2" href="{{ route('mails.index') }}">
-                    Mailing
+                <a class="list-group-item list-group-action" href="{{ route('mails.index') }}" role="button">
+                    Mailing 
+                </a>
+                <a class="list-group-item list-group-action" href="{{ route('logs') }}" role="button">
+                    Logs
                 </a>
             </div>
+        </div>
             <div clas='row'>
                 <form action="{{ route('command.run') }}" method="POST" class="mt-5">
                     @csrf
@@ -40,6 +48,12 @@
             </div>
         </div>
     </article>
+    <script>
+        document.querySelectorAll('.list-group-item').forEach(i => {
+            i.addEventListener('mouseover', () => i.classList.add('active'));
+            i.addEventListener('mouseout', () => i.classList.remove('active'));
+        });
+    </script>
         
 </main>
 @endsection
