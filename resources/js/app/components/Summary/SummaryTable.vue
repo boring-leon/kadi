@@ -1,4 +1,5 @@
 <template>
+<section>
   <table class="table table-bordered">
     <thead class="thead-dark">
       <tr>
@@ -29,14 +30,21 @@
         <td>
           <b>{{ totalKcal | round() }}</b>
         </td>
+        <td>-</td>
       </tr>
     </tbody>
   </table>
+  <GlycemicAlert v-if='highlyGlycemicIngredients.length >0' 
+    :highlyGlycemicIngredients='highlyGlycemicIngredients' 
+  />
+</section>
 </template>
 
 <script>
+import GlycemicAlert from './GlycemicAlert.vue';
 export default {
   name: "SummaryTable",
+  components: { GlycemicAlert },
   props: {
     ingredients: {
       type: Array,
@@ -49,6 +57,29 @@ export default {
     totalKcal: {
       type: Number,
       required: true
+    },
+    colors: {
+      required: false,
+      default: () => ['green', 'orange', 'red']
+    }
+  },
+  methods: {
+    getTdColor(i) {
+      return i.glycemic_index == null ? null : this.color(i.glycemic_index)
+    },
+    color(index) {
+      if (index <= 55) {
+        return this.colors[0];
+      } 
+      else if (index > 55 && index <= 69) {
+        return this.colors[1];
+      } 
+      return this.colors[2];
+    }
+  },
+  computed:{
+    highlyGlycemicIngredients(){
+      return this.$store.state.Plate.ingredients.filter(i => i.glycemic_index > 69);
     }
   }
 };

@@ -1,25 +1,24 @@
 <template>
   <article class="text-center">
     <HeaderCenter>Podsumowanie</HeaderCenter>
-
-    <section>
-      <SummaryTable :ingredients="ingredients" :totalExchangers="totalExchangers" :totalKcal='totalKcal' />
-    </section>
-
+      
+    <SummaryTable :ingredients="ingredients" :totalExchangers="totalExchangers" :totalKcal='totalKcal' />
+    <hr>
     <section>
       <ExchangerModal id="exchanger_modal" />
       <ActivitiesModal id="activities_modal" :kcal ='totalKcal' />
       <CreateMeal id="meal_modal" />
 
-      <div class="alert alert-info total-units" style='margin-bottom:35px;'>
+      <div class="alert alert-info total-units" style='margin-bottom:5;'>
         <h4 style="margin:0; padding:0;">Sugerowana ilość jednostek {{ totalUnits | round(2) }}</h4>
       </div>
+      <div class="alert alert-danger" style='margin-bottom:40px;'>
+        <span style='font-size:1.1rem;'>
+          Sprawdź przelicznik - <b> może być inny w zależności od pory dnia </b> !
+        </span>
+      </div>
     </section>
-
-    <div class="alert alert-danger" style='margin-bottom:40px;'>
-      Sprawdź przelicznik - <b> może być inny w zależności od pory dnia </b> !
-    </div>
-
+    <hr>
     <footer>
       <div class="absolute-bottom btn-block-container">
         <button class="btn btn-block btn-lg btn-danger mb-2" @click="displayModal('exchanger_modal')">
@@ -37,7 +36,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from "vuex";  
 import SummaryTable from "../components/Summary/SummaryTable.vue";
 import ExchangerModal from "../components/Summary/ExchangerModal.vue";
 import ActivitiesModal from "../components/Summary/ActivitiesModal.vue";
