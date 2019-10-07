@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <input type='number' class='form-control  @error("glycemic_index") is-invalid @enderror' 
-                name='glycemic_index' placeholder="IG" value="{{ old('kcal') }}">
+                name='glycemic_index' placeholder="IG" value="{{ old('glycemic_index') }}">
                 @error('glycemic_index')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
