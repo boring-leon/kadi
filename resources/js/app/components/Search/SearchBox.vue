@@ -13,13 +13,13 @@
       </div>
       <div class="col-6 col-md-4">
         <select class="form-control" @change="$emit('update:ingredientType', $event.target.value)">
-          <option selected value="*">rodzaj składnika</option>
+          <option selected value="*">rodzaj</option>
           <option v-for="option in options" :key="option.id">{{ option.name }}</option>
         </select>
       </div>
-      <div class="col-6 col-md-4" v-if="customMeals.length > 0">
+      <div class="col-6 col-md-4">
         <select class="form-control" @change="loadPlate($event.target.value)">
-          <option selected value>posiłek</option>
+          <option selected value>mój posiłek</option>
           <option v-for="meal in customMeals" :key="meal.templateKey" :value="meal.id"
           >{{ meal.name }}</option>
         </select>

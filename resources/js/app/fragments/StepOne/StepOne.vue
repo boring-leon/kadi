@@ -6,9 +6,9 @@
     </section>
 
     <section style="margin-top:25px;" class="text-center">
-      <p class="lead" v-once>
-        Nie wiesz jak korzystać z aplikacji? Kliknij
-        <router-link :to="{name: 'tutorial'}">tutaj</router-link>
+      <p class="lead" style="font-size:1.3rem" v-once>
+        <router-link :to="{name: 'tutorial'}">Zobacz</router-link>
+        jak korzystać z aplikacji
       </p>
       <template v-if="searchSuccessful">
         <hr />
