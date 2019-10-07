@@ -3,7 +3,6 @@
   <table class="table table-bordered">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
         <th scope="col">nazwa</th>
         <th scope="col">waga</th>
         <th scope="col">WW</th>
@@ -12,8 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(ingredient, index) in ingredients" :key="ingredient.templateKey">
-        <td>{{ index + 1 }}</td>
+      <tr v-for="ingredient in ingredients" :key="ingredient.templateKey">
         <td>{{ingredient.name }}</td>
         <td>{{ ingredient.weight | round() }}g</td>
         <td>{{ ingredient.exchanger | round()}}</td>
@@ -21,7 +19,6 @@
         <td :style="{color: getTdColor(ingredient) }">{{ ingredient.glycemic_index || "-" }}</td>
       </tr>
       <tr>
-        <td>-</td>
         <td>-</td>
         <td>-</td>
         <td>
