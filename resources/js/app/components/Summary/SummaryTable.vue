@@ -16,7 +16,7 @@
         <td>{{ ingredient.weight | round() }}g</td>
         <td>{{ ingredient.exchanger | round()}}</td>
         <td>{{ ingredient.kcal | round() }}</td>
-        <td :style="{color: getTdColor(ingredient) }">{{ ingredient.glycemic_index || "-" }}</td>
+        <td :style="{color: getTdColor(ingredient) }"><b>{{ ingredient.glycemic_index || "-" }}</b></td>
       </tr>
       <tr>
         <td>-</td>
