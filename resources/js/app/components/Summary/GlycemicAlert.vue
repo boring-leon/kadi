@@ -2,7 +2,7 @@
   <p style="color:red; font-size: 1.1rem;">
     Wykryto
     <template v-if="highlyGlycemicIngredients.length == 1">
-      1 składnik ({{highlyGlycemicIngredients[0].name }})
+      1 składnik  - {{highlyGlycemicIngredients[0].name }}
     </template>
     
     <template v-else-if="highlyGlycemicIngredients.length >=2 && highlyGlycemicIngredients.length <5">
