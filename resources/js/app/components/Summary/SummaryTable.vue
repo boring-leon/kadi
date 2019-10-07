@@ -7,6 +7,7 @@
         <th scope="col">waga</th>
         <th scope="col">WW</th>
         <th scope="col">kcal</th>
+        <th scope="col">IG</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,7 @@
         <td>{{ ingredient.weight | round() }}g</td>
         <td>{{ ingredient.exchanger | round()}}</td>
         <td>{{ ingredient.kcal | round() }}</td>
+        <td :style="{color: getTdColor(ingredient) }">{{ ingredient.glycemic_index || "-" }}</td>
       </tr>
       <tr>
         <td>-</td>
