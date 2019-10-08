@@ -77,7 +77,8 @@
 
                             <div class="col-md-6">
                                 <input id="exchanger" type="number" class="form-control @error('exchanger') is-invalid @enderror" 
-                                name="exchanger" value="{{ old('exchanger') }}" required step="0.01">
+                                name="exchanger" value="{{ old('exchanger') }}" required step="0.01"
+                                placeholder="ile jednostek insuliny na 1 WW">
                                 @error('exchanger')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -94,7 +95,12 @@
                             </div>
                         </div>
                     </form>
-                    <p class='text-center'>
+                    <p class='text-center d-sm-none' style='font-size:0.95rem'>
+                        Należy wstępnie przyjąć przelicznik <br> <b>1 WW = 1 jednostka</b> <br>
+                        i sprawdzić glikemię 2h po posiłku. 
+                        Dalej metodą prób i błędów :)
+                    </p>
+                    <p class='text-center d-none d-md-block' style='font-size:1.15rem'>
                         Należy wstępnie przyjąć przelicznik <b>1 WW = 1 jednostka</b> i sprawdzić glikemię 2h po posiłku. 
                         Dalej metodą prób i błędów :)
                     </p>
