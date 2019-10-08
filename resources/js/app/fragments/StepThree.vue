@@ -49,6 +49,8 @@ import ExchangerModal from "../components/Summary/ExchangerModal.vue";
 import ActivitiesModal from "../components/Summary/ActivitiesModal.vue";
 import CreateMeal from "../components/CustomMeal/Controllers/Create.vue";
 
+import PropertyCalculator from "../../domain/plate/PropertyCalculator";
+
 export default {
   name: "StepThreeFragment",
   components: { SummaryTable, ExchangerModal, ActivitiesModal, CreateMeal },
@@ -60,23 +62,6 @@ export default {
     this.syncAbsoluteBottom(-20, 50);
   },
 
-  methods: {
-    getExchanger(plateIngredient) {
-      return this.getStoreIngredient(plateIngredient).exchanger * this.getPortions(plateIngredient);
-    },
-
-    getKcal(plateIngredient) {
-      return this.getStoreIngredient(plateIngredient).kcal * this.getPortions(plateIngredient);
-    },
-
-    getPortions(plateIngredient) {
-      return plateIngredient.weight / this.getStoreIngredient(plateIngredient).portion.weight;
-    },
-
-    getStoreIngredient(plateIngredient) {
-      return this.$store.getters["find"](plateIngredient.templateKey);
-    }
-  },
   computed: {
     userExchanger() {
       return this.$store.state.User.exchanger;
@@ -95,11 +80,12 @@ export default {
         .reduce((previous, current) => previous + current);
     },
     ingredients() {
-      return this.$store.state.Plate.ingredients.map(m => {
+      return this.$store.state.Plate.ingredients.map(i => {
+        const calculator = new PropertyCalculator(i, this.$store);
         return {
-          ...m,
-          exchanger: this.getExchanger(m),
-          kcal: this.getKcal(m),
+          ...i,
+          exchanger: calculator.exchanger,
+          kcal: calculator.kcal,
         };
       });
     }
