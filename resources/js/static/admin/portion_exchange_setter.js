@@ -1,4 +1,4 @@
-import PlateExchangerCalculator from '../../app/services/PlateExchangerCalculator';
+import ExchangerCalculator from '../../domain/plate/PortionExchangerCalculator';
 
 const getInputValue = (inputName, defaultValue) => {
     const val = document.querySelector(`input[name=${inputName}]`).value;
@@ -7,11 +7,11 @@ const getInputValue = (inputName, defaultValue) => {
 }
 
 const setExchangeInputValue = () => {
-    const calculator = new PlateExchangerCalculator({
-        portion: getInputValue('portion_weight', 100),
-        exchanger: getInputValue('custom_exchanger')
+    const calculator = new ExchangerCalculator({
+        portionWeight: getInputValue('portion_weight', 100),
+        customExchanger: getInputValue('custom_exchanger')
     });
-    document.querySelector('input[name=exchanger]').value = calculator.getPortionExchanger();
+    document.querySelector('input[name=exchanger]').value = calculator.portionExchanger;
 }
 document.querySelector('input[name=custom_exchanger]').addEventListener('keyup', setExchangeInputValue);
 document.querySelector('input[name=portion_weight]').addEventListener('keyup', setExchangeInputValue);

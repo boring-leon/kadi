@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import PlateExchangerCalculator from "../../../services/PlateExchangerCalculator";
+import ExchangerCalculator from "../../../../domain/plate/PortionExchangerCalculator";
 import uuid from "uuid";
 import modalMixin from "../../../mixins/modal";
 
@@ -131,11 +131,11 @@ export default {
       );
     },
     setIngredientExchanger() {
-      const calculator = new PlateExchangerCalculator({
-        portion: this.ingredient.portion_weight || 100,
-        exchanger: this.customExchanger
+      const calculator = new ExchangerCalculator({
+        portionWeight: this.ingredient.portion_weight || 100,
+        customExchanger: this.customExchanger
       });
-      this.ingredient.exchanger = calculator.getPortionExchanger();
+      this.ingredient.exchanger = calculator.portionExchanger;
     }
   },
 
