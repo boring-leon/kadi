@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 Route::namespace('Api')->group(function(){
     Route::post('ingredients/{user}', 'CustomIngredientsController@store');
     Route::patch('ingredients/{ingredient_belongs}', 'CustomIngredientsController@update');
