@@ -87,6 +87,7 @@
 import ExchangerCalculator from "../../../../domain/plate/PortionExchangerCalculator";
 import uuid from "uuid";
 import modalMixin from "../../../mixins/modal";
+import { validate }  from '../../../validators/Ingredient';
 
 export default {
   name: "CreateIngredient",
@@ -171,12 +172,7 @@ export default {
       return this.types.find(t => t.name.includes("moje")).name;
     },
     canSubmit() {
-      return (
-        this.ingredient.name.trim().length > 0 &&
-        this.ingredient.kcal > 0 &&
-        this.ingredient.exchanger >= 0 &&
-        this.ingredient.portion_weight >= 0
-      );
+      return validate(this.ingredient);
     }
   }
 };

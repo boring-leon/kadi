@@ -79,6 +79,7 @@
 <script>
 import { cloneDeep } from "lodash";
 import modalMixin from '../../../mixins/modal';
+import { validate }  from '../../../validators/Ingredient';
 
 export default {
   name: "EditIngredient",
@@ -94,7 +95,7 @@ export default {
     return {
       formIngredient: {
         portion_name: "1 porcja",
-        portion_weight: 100
+        portion_weight: 100,
       }
     };
   },
@@ -124,19 +125,14 @@ export default {
       this.formIngredient = cloneDeep(this.ingredient);
       this.formIngredient.portion_name = cloneDeep(this.ingredient.portion.name);
       this.formIngredient.portion_weight = cloneDeep(this.ingredient.portion.weight);
-    }
+    },
   },
   computed: {
     types() {
       return baseState.ingredient_types;
     },
     canSubmit() {
-      return (
-        this.formIngredient.name.trim().length > 0 &&
-        this.formIngredient.kcal > 0 &&
-        this.formIngredient.exchanger >= 0 && 
-        this.formIngredient.portion_weight >= 0
-      );
+      return validate(this.formIngredient);
     }
   }
 };
