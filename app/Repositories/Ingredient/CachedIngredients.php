@@ -5,22 +5,26 @@ namespace App\Repositories\Ingredient;
 use App\Models\Ingredient;
 use App\Repositories\Ingredient\IngredientQueries;
 use App\Services\Cache\CollectionModelUpdater;
+use App\Services\Pipeline;
 use Illuminate\Contracts\Cache\Repository as Cache;
 
 class CachedIngredients implements IngredientQueries
 {
-    private $base, $cache, $collectionUpdater;
+    private $base, $cache, $pipeline, $collectionUpdater;
 
-    public function __construct(IngredientQueries $base, Cache $cache){
+    public function __construct(IngredientQueries $base, Cache $cache, Pipeline $pipeline){
         $this->base = $base;
         $this->cache = $cache;
+        $this->pipeline = $pipeline;
         $this->collectionUpdater = new CollectionModelUpdater($this->all());
     }
 
     public function all(){
-        return $this->cache->rememberForever('ingredients', function(){
-            return $this->base->all();
-        });
+        $data = $this->cache->rememberForever('ingredients', function(){ return $this->base->all(); });
+        return $this->pipeline->data($data)->runThrough([
+            \App\Filters\NotNull::class,
+            \App\Filters\Sort::class
+        ]);
     }
 
     public function find($id){
