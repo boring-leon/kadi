@@ -23,7 +23,7 @@ class IngredientsController extends Controller
     }
 
     public function index(){
-        $ingredients = $this->ingredientRepo->all();
+        $ingredients = $this->ingredientRepo->allWithFilters();
         return view('ingredients.index')->with('ingredients', $ingredients);
     }
 

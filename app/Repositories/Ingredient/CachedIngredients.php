@@ -20,9 +20,16 @@ class CachedIngredients implements IngredientQueries
     }
 
     public function all(){
-        $data = $this->cache->rememberForever('ingredients', function(){ return $this->base->all(); });
-        return $this->pipeline->data($data)->runThrough([
+        return $this->cache->rememberForever('ingredients', function(){ 
+            return $this->base->all(); 
+        });
+    }
+
+    public function allWithFilters(){
+        return $this->pipeline->data($this->all())->runThrough([
+            \App\Filters\KeyHasValue::class,
             \App\Filters\NotNull::class,
+            \App\Filters\IsNull::class,
             \App\Filters\Sort::class
         ]);
     }
