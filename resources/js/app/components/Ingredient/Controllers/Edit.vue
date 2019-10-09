@@ -32,6 +32,14 @@
               <input
                 type="number"
                 class="form-control"
+                placeholder="IG"
+                v-model.number="formIngredient.glycemic_index"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="number"
+                class="form-control"
                 required
                 placeholder="WW/porcja"
                 step="0.01"

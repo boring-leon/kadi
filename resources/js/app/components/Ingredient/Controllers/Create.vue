@@ -32,6 +32,14 @@
               <input
                 type="number"
                 class="form-control"
+                placeholder="IG"
+                v-model.number="ingredient.glycemic_index"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="number"
+                class="form-control"
                 placeholder="WW/porcja"
                 step="0.01"
                 v-model.number="ingredient.exchanger"
@@ -98,6 +106,7 @@ export default {
         type: "",
         exchanger: "",
         kcal: "",
+        glycemic_index: null,
         portion_name: "1 porcja",
         portion_weight: 100,
         templateKey: "",

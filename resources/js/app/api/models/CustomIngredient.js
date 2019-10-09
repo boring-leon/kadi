@@ -8,7 +8,7 @@ export default{
                 data: ingredient
             },
             transform:{
-                take: ['name', 'type', 'exchanger', 'kcal', 'portion_name', 'portion_weight']
+                take: ['name', 'type', 'exchanger', 'kcal', 'portion_name', 'portion_weight', 'glycemic_index']
             }
         });
     },
@@ -20,7 +20,7 @@ export default{
                 data: ingredient
             },
             transform:{
-                take: ['name', 'type', 'exchanger', 'kcal', 'portion_name', 'portion_weight']
+                take: ['name', 'type', 'exchanger', 'kcal', 'portion_name', 'portion_weight', 'glycemic_index']
             }
         });
     },
