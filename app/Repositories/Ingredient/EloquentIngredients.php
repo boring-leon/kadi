@@ -7,7 +7,7 @@ use App\Models\Ingredient;
 class EloquentIngredients implements IngredientQueries
 {
     public function all(){
-        return Ingredient::orderBy('name')->get();
+        return Ingredient::all();
     }
 
     public function find($id){
