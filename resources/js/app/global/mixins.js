@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import TopCalculator from '../services/TopCalculator';
+import PositionUpdater from '../services/PositionUpdater';
 
 Vue.mixin({
     methods: {
         syncAbsoluteBottom(extraTop, pageMargin = 0) {
-            this.$nextTick(() => new TopCalculator(extraTop, pageMargin).setTop());
+            this.$nextTick(() => new PositionUpdater(extraTop, pageMargin).updatePosition());
         },
         makeError(message, route = null) {
             this.createMessage(message, "error", route);

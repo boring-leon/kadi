@@ -59,7 +59,7 @@ export default {
   },
   updated() {
     this.displaySupportInfo = false;
-    this.syncAbsoluteBottom(this.$parent.syncExtraTop);
+    this.syncAbsoluteBottom(this.$parent.syncExtraTop + 14);
   },
   methods: {
     setIngredientsDebounced: debounce(function() {
