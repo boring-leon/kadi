@@ -34,7 +34,7 @@
 
 <script>
 import modalMixin from '../../mixins/modal';
-import ActivityTimeCalculator from '../../services/ActivityTimeCalculator';
+import ActivityTimeCalculator from '../../../domain/ActivityTimeCalculator';
 
 export default {
   name: "ActivitesModal",

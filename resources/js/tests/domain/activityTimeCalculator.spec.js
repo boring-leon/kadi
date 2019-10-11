@@ -1,4 +1,4 @@
-import ActivityTimeCalculator from '../../app/services/ActivityTimeCalculator';
+import ActivityTimeCalculator from '../../domain/ActivityTimeCalculator';
 
 test('calculating minutes with a whole result', () => {
     const calculator = new ActivityTimeCalculator({mealKcal: 600, activityMinuteKcal: 60});
