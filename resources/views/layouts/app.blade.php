@@ -2,9 +2,9 @@
 <html lang="pl">
 <head>
     <meta charset="utf-8">
-    <title>@yield('title')</title>
+    <title>@yield('title', config('seo.title'))</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="@yield('description', 'Kadi to kalkulator dla cukrzyków. Wybierz, co jesz, a Kadi obliczy dla Ciebie ilość wymienników węglowodanowych, kcal oraz proponowane dawki insuliny na podstawie indywidualnego przelicznika J/WW')">
+    <meta name="description" content="@yield('description', config('seo.desc'))">
     <meta name="author" content="Leon Czerwiński">
     <meta name="robots" content="index, follow">
     <link rel="apple-touch-icon" type="image/png" href="{{ asset('icon.png') }}">
