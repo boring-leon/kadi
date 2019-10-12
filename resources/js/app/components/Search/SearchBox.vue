@@ -12,7 +12,7 @@
         />
       </div>
       <div class="col-6 col-md-4">
-        <select class="form-control" @change="$emit('update:ingredientType', $event.target.value)">
+        <select :id="typeSelectID" class="form-control" @change="$emit('update:ingredientType', $event.target.value)">
           <option selected value="*">rodzaj</option>
           <option v-for="option in options" :key="option.id">{{ option.name }}</option>
         </select>
@@ -44,6 +44,9 @@ export default {
     },
     options: {
       default: () => baseState.ingredient_types
+    },
+    typeSelectID:{
+      default: 'ingredient_types_select'
     }
   },
   methods: {
@@ -72,6 +75,14 @@ export default {
 
     isAlreadyOnPlate(ingredient){
       return this.$store.getters["Plate/findById"](ingredient.id)
+    }
+  },
+  watch:{
+    ingredientType(v){
+      const isWildcard = v == '*';
+      if(isWildcard){
+        $('#' + this.typeSelectID).prop('selectedIndex', 0);
+      }
     }
   },
   computed: {
