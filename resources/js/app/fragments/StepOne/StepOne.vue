@@ -33,12 +33,11 @@ import SearchResults from "../../components/Search/SearchResults.vue";
 import FailedSearch from "./fragments/search/FailedSearch.vue";
 import AppSupportInfo from "./fragments/info/AppSupport.vue";
 import { debounce } from "lodash";
-import searchMixin from "../../mixins/searchMethods";
+import SearchService from "../../../domain/SearchService";
 
 export default {
   name: "StepOneFragment",
   components: { SearchBox, SearchResults, FailedSearch, AppSupportInfo },
-  mixins: [searchMixin],
   data() {
     return {
       search: {
@@ -69,7 +68,7 @@ export default {
     setIngredients() {
       if (this.searchNameInputed) {
         this.$parent.displaySelectedIngredients = false;
-        this.ingredients = this.getMatchedByNameAndType();
+        this.ingredients = this.getSearchService().filterIngredientsByAll();
         this.searchFailed = this.getSearchFailed();
       } 
       else {
@@ -81,17 +80,20 @@ export default {
       return this.searchFailed =
         this.ingredients.length == 0 &&
         !this.$parent.displaySelectedIngredients &&
-        !this.searchIngredientAlreadyOnPlate;
+        !this.searchNameIsAlreadyOnPlate;
     },
 
-    getMatchedByNameAndType() {
-      return this.getMatchedByName().filter(m => this.typeMatches(m));
+    getSearchResults() {
+      return this.getSearchService().filterIngredientsByAll();
     },
 
-    getMatchedByName() {
-      return this.storeIngredients.filter(
-        m => this.nameMatches(m) && this.hasNotBeenSelected(m)
-      );
+    getSearchResultsMatchByName() {
+      return this.getSearchService().filterIngredientsByName();
+    },
+
+    getSearchService(){
+      const ingredients = this.storeIngredients.filter(i => !this.$store.getters["Plate/find"](i.templateKey));
+      return new SearchService({ingredients: ingredients, search: this.search});
     }
   },
 
@@ -120,7 +122,7 @@ export default {
     searchNameInputed() {
       return this.search.name.trim().length > 0;
     },
-    searchIngredientAlreadyOnPlate() {
+    searchNameIsAlreadyOnPlate() {
       return this.plateIngredients.filter(m =>
         m.name.trim().toUpperCase() == this.search.name.trim().toUpperCase()
       ).length > 0;
