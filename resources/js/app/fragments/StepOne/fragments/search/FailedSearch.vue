@@ -3,12 +3,12 @@
     <IngredientNotFound
       @resetSearchRequest="resetSearch"
       :searchName="$parent.search.name"
-      v-if="!anyIngredientsFound"
+      v-if="!anyIngredientsMatchedByNameExist"
     />
     <FilterAlert
       :searchType="$parent.search.type"
       @clearFilters="clearFilters"
-      v-else-if="activeSearchFilterExists"
+      v-else-if="searchTypeFilterExists"
     />
   </div>
 </template>
@@ -20,6 +20,16 @@ import FilterAlert from "../../../../components/Search/FilterAlert.vue";
 export default {
   name: "FailedSearch",
   components: { IngredientNotFound, FilterAlert },
+  props:{
+    searchTypeFilterExists:{
+      type: Boolean,
+      required: true
+    },
+    anyIngredientsMatchedByNameExist:{
+      type: Boolean,
+      required: true
+    }
+  },
   mounted(){
     this.syncAbsoluteBottom(55);
   },
@@ -28,18 +38,10 @@ export default {
   },
   methods: {
     clearFilters() {
-      this.$parent.search.type = "*";
+      this.$parent.search.type = '*';
     },
     resetSearch(){
       this.$parent.searchFailed = false;
-    }
-  },
-  computed: {
-    activeSearchFilterExists() {
-      return this.$parent.search.type != "*";
-    },
-    anyIngredientsFound(){
-      return this.$parent.getMatchedByName().length > 0;
     }
   }
 };

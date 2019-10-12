@@ -15,7 +15,10 @@
         <SearchResults :ingredients="ingredients" />
       </template>
 
-      <FailedSearch v-if="searchFailed" />
+      <FailedSearch v-if="searchFailed" 
+        :searchTypeFilterExists="search.type != '*'"
+        :anyIngredientsMatchedByNameExist="getSearchService().filterIngredientsByName().length > 0"
+      />
 
       <template v-else-if="selectedIngredientsDisplayRequested">
         <hr />
