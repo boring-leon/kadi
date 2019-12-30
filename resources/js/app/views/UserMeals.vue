@@ -3,8 +3,16 @@
     <HeaderCenter>Twoje posiłki</HeaderCenter>
     <p class="lead" v-if="customMeals.length > 0">
       Aby usunąć posiłek, naciśnij na przycisk
-      <b>dwukrotnie</b>
+      <b>dwukrotnie</b>. 
+      <br> 
+      <i>
+      Chcesz <b>edytować posiłek</b>?
+       Klinkij 
+       <a href="https://youtu.be/z3QQQ_oRd4o" target="_blanks">tutaj</a> 
+       aby dowiedzieć się jak to zrobić
+      </i>
     </p>
+
     <div class="card" v-if="customMeals.length > 0">
       <ul class="list-group list-group-flush">
         <li class="list-group-item" v-for="meal in customMeals" :key="meal.templateKey">
