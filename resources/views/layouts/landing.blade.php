@@ -6,13 +6,14 @@
   <meta name="description" content="{{ config('seo.desc') }}">
   <meta name="author" content="Leon Czerwiński">
   <meta name="robots" content="index, follow">
+  <meta name="keywords" content="cukrzyca, insulina, wymienniki węglowodanowe, daibetyk">
   <title>{{ config('seo.title') }}</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet">
   <link href="{{ asset('css/landing.css') }}" rel="stylesheet">
   <link rel="apple-touch-icon" type="image/png" href="{{ asset('icon.png') }}">
   <link rel="apple-touch-icon" type="image/png" sizes="72x72" href="{{ asset('icon72.png') }}">
-  <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="{{ asset('icon114.png') }}"
+  <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="{{ asset('icon114.png') }}">
 </head>
 
 <body>
