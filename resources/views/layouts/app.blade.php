@@ -11,6 +11,7 @@
     <link rel="apple-touch-icon" type="image/png" sizes="72x72" href="{{ asset('icon72.png') }}">
     <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="{{ asset('icon114.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="manifest" href="{{asset('kadi.webmanifest') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script> window.Laravel = { csrfToken : '{{ csrf_token() }}'}; </script>
     @yield('head-script')
@@ -25,4 +26,5 @@
     </div>
     @include('inc.fb')
     @yield('body-bottom-script')
+    <script src="{{ asset('serviceWorker.js') }}"></script>
 </body>
