@@ -1,0 +1,21 @@
+{
+    "name": "Kadi - kalkulator dla cukrzyków",
+    "short_name": "Kadi",
+    "description": "Oblicz ilość jednostek insuliny po posiłku, nie martwiąc się o wymienniki węglowodanowe ani indeks glikemiczny składników.",
+    "icons": [
+        {
+            "src": "icon192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "https://kadi.com.pl/",
+    "display": "fullscreen",
+    "theme_color": "#B12A34",
+    "background_color": "#ffffff"
+}
