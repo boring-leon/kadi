@@ -38,4 +38,8 @@ class HomeController extends Controller
 
         return view('app')->with('data', $data);
     }
+
+    public function aboutAppDocument(){
+        return redirect()->away('https://docs.google.com/document/d/1s956gQ13aWMTBRQTq4NmXpdNXD_VXA-cCzXyVp8fiII/edit?usp=sharing');
+    }
 }

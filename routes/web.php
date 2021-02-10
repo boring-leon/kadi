@@ -27,5 +27,7 @@ Route::middleware(["verified"])->group(function(){
     });
 });
 
+Route::get('about', 'App\HomeController@aboutAppDocument');
+
 //landing, or app
 Route::get('{any}', 'App\HomeController@handleRoute')->where('any', '.*');
