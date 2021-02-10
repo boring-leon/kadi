@@ -13,7 +13,6 @@
         <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">id</th>
                 <th scope="col">nazwa</th>
                 <th scope="col">email</th>
                 <th scope="col">J/WW</th>
@@ -27,7 +26,6 @@
                 @if($user->email_verified_at) <tr style='color: #1209b5; font-weight:600'>
                 @else <tr>
                 @endif
-                  <th scope="row">{{$user->id }}</th>
                   <td>{{$user->name }}</td>
                   <td>{{$user->email }}</td>
                   <td>{{$user->exchanger }}</td>

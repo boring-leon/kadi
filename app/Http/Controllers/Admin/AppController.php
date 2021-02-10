@@ -19,11 +19,13 @@ class AppController extends Controller
     }
 
     public function userList(){
-        $records = \App\Models\User::orderByDesc('created_at');
+        $query = \App\Models\User::orderByDesc('created_at');
+        $records = $query->get();
+
         $data = [
-            'total_users' => count($records->get()) -2,
-            'verified_users' => count($records->get()->filter->email_verified_at) -2,
-            'users' => $records->paginate(15),
+            'total_users' => count($records) -2,
+            'verified_users' => count($records->filter->email_verified_at) -2,
+            'users' => $query->paginate(15),
         ];
         return view('admin.user_list')->with($data);
     }
